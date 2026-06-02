@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Modelo OSI - Projeto de Redes</title>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <img src="./assets/modeloOSI.jpg" alt="Logo Redes" class="logo-img">
+            <div class="header-titles">
+                <h1 id="titulo-header">Modelo OSI - Projeto de Redes</h1>
+                <p id="subtitulo-header">Aguardando entrada de dados...</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-container">
+        
+        <section id="tela-roteador" class="painel-ativo">
+            <div class="input-group">
+                <input type="text" id="input-principal" class="campo-texto" placeholder="Digite uma mensagem, um e-mail ou um site...">
+                <button id="btn-analisar" class="btn-primario">Analisar Rota</button>
+            </div>
+            
+            <div class="upload-group">
+                <p>Ou envie um arquivo:</p>
+                <input type="file" id="input-arquivo" class="campo-arquivo">
+            </div>
+            <h2 id="feedback-rota" class="mensagem-feedback"></h2>
+        </section>
+
+        <section id="tela-chat" class="painel-formulario oculto">
+            <h2>Módulo de Chat</h2>
+            <form id="form-chat">
+                <label>Nome de Usuário:</label>
+                <input type="text" id="chat-user" class="campo-texto" required>
+                
+                <label>Mensagem (Editável):</label>
+                <input type="text" id="chat-msg" class="campo-texto" required>
+                
+                <button type="submit" class="btn-primario">Enviar Mensagem</button>
+                <button type="button" class="btn-voltar">Voltar</button>
+            </form>
+        </section>
+
+        <section id="tela-email" class="painel-formulario oculto">
+            <h2>Módulo SMTP (E-mail)</h2>
+            <form id="form-email">
+                <label>Remetente:</label>
+                <input type="email" id="email-from" class="campo-texto" required>
+                
+                <label>Destinatário:</label>
+                <input type="email" id="email-to" class="campo-texto" required>
+                
+                <label>Corpo da Mensagem:</label>
+                <textarea id="email-body" class="campo-area" required></textarea>
+                
+                <button type="submit" class="btn-primario">Disparar E-mail</button>
+                <button type="button" class="btn-voltar">Voltar</button>
+            </form>
+        </section>
+
+        <section id="tela-sites" class="painel-formulario oculto">
+            <h2>Módulo Web (HTTP/HTTPS)</h2>
+            <form id="form-sites">
+                <label>Usuário da Rede:</label>
+                <input type="text" id="web-user" class="campo-texto" required>
+                
+                <label>URL / Hostname:</label>
+                <input type="text" id="web-url" class="campo-texto travado" readonly>
+                
+                <button type="submit" class="btn-primario">Fazer Requisição (GET)</button>
+                <button type="button" class="btn-voltar">Voltar</button>
+            </form>
+        </section>
+
+        <section id="tela-arquivos" class="painel-formulario oculto">
+            <h2>Módulo de Arquivos (FTP)</h2>
+            <form id="form-arquivos">
+                <label>Remetente:</label>
+                <input type="text" id="ftp-user" class="campo-texto" required>
+                
+                <label>Nome do Arquivo:</label>
+                <input type="text" id="ftp-nome" class="campo-texto travado" readonly>
+                
+                <label>Formato:</label>
+                <input type="text" id="ftp-extensao" class="campo-texto travado" readonly>
+                
+                <button type="submit" class="btn-primario">Transmitir Pacote</button>
+                <button type="button" class="btn-voltar">Voltar</button>
+            </form>
+        </section>
+
+        <pre id="terminal-saida" class="oculto"></pre>
+
+    </main>
+
+    <script src="./script/criptografia.js"></script>
+    <script src="./script/terminal.js"></script>
+    <script src="./script/modulos.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
