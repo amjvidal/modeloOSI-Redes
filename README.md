@@ -42,7 +42,6 @@ O simulador intercepta a entrada de dados do usuário e passa pelas seguintes ca
 
 ## 📂 Estrutura Arquitetural do Código (Inglês)
 
-Todo o código foi padronizado em inglês para seguir as boas práticas globais de mercado.
 
 ```text
 modeloOSI-Redes/
