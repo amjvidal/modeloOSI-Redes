@@ -1,107 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo OSI</title>
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <title>Modelo OSI - Projeto de Redes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <header class="app-header">
-        <div class="header-content">
-            <img src="./assets/modeloOSI.jpg" alt="Logo Redes" class="logo-img">
-            <div class="header-titles">
-                <h1 id="titulo-header">Modelo OSI - Projeto de Redes</h1>
-                <p id="subtitulo-header">Aguardando entrada de dados...</p>
+    <div class="app-layout">
+        <aside class="sidebar-header">
+            <img src="./images/osiModel.jpg" alt="Modelo OSI" class="header-photo">
+            <h1 class="title">Projeto de Redes</h1>
+            <p class="subtitle">Modelo OSI</p>
+            <div class="user-box">
+                <p class="user"></p>
+                <button id="btn-logout" class="logout-btn">Trocar Usuário</button>
             </div>
-        </div>
-    </header>
+        </aside>
 
-    <main class="app-container">
-        
-        <section id="tela-roteador" class="painel-ativo">
-            <div class="input-group">
-                <input type="text" id="input-principal" class="campo-texto" placeholder="Digite uma mensagem, um e-mail ou um site...">
-                <button id="btn-analisar" class="btn-primario">Analisar Rota</button>
+        <main class="main-content">
+            <div class="search-section">
+                <div class="request-wrapper">
+                    <h2>Nova Transmissão</h2>
+                    <div class="input-row">
+                        <input type="text" placeholder="Ex: ws://chat, www.site.com, @email..." class="text-input input-field">
+                        <button type="submit" class="request-btn">Verificar Protocolo</button>
+                    </div>
+
+                    <div class="upload-section">
+                        <label for="arquivo">Arquivo Rápido (FTP):</label>
+                        <input type="file" id="arquivo">
+                    </div>
+                </div>
+
+                <div class="protocol-response-wrapper">
+                    <h1 class="protocol-response"></h1>
+                </div>
             </div>
-            
-            <div class="upload-group">
-                <p>Ou envie um arquivo:</p>
-                <input type="file" id="input-arquivo" class="campo-arquivo">
+
+            <div class="forms-section">
+                <form class="email-form hidden">
+                    <h2 class="form-title">Serviço de Correio (SMTP)</h2>
+
+                    <div class="form-group">
+                        <label for="remetente">Remetente:</label>
+                        <input type="email" id="remetente" class="input-field" placeholder="voce@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destinatario">Destinatário:</label>
+                        <input type="email" id="destinatario" class="input-field" placeholder="destino@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assunto">Assunto:</label>
+                        <input type="text" id="assunto" class="input-field" placeholder="Título" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="corpo">Mensagem:</label>
+                        <textarea id="corpo" class="input-field textarea-field" placeholder="Escreva aqui..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="protocolo">Protocolo Detectado:</label>
+                        <input type="text" id="protocolo" class="input-field" value="SMTP" readonly>
+                    </div>
+
+                    <button type="submit" class="request-btn">Disparar E-mail</button>
+                </form>
+
+                <form class="chat-form hidden">
+                    <h2 class="form-title">Serviço de Chat Instantâneo (WebSocket)</h2>
+
+                    <div class="form-group">
+                        <label for="chat-destinatario">Enviar para:</label>
+                        <input type="text" id="chat-destinatario" class="input-field" placeholder="Contato..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chat-mensagem">Mensagem:</label>
+                        <textarea id="chat-mensagem" class="input-field textarea-field" placeholder="Sua mensagem..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="request-btn">Transmitir Chat</button>
+                </form>
+
+                <form class="site-form hidden">
+                    <h2 class="form-title">Requisição Web (HTTP/HTTPS)</h2>
+
+                    <div class="form-group">
+                        <label for="site-metodo">Verbo HTTP:</label>
+                        <select id="site-metodo" class="input-field">
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="site-host">Domínio / Host:</label>
+                        <input type="text" id="site-host" class="input-field" readonly>
+                    </div>
+
+                    <button type="submit" class="request-btn">Fazer Requisição</button>
+                </form>
             </div>
-            <h2 id="feedback-rota" class="mensagem-feedback"></h2>
-        </section>
+        </main>
+    </div>
 
-        <section id="tela-chat" class="painel-formulario oculto">
-            <h2>Módulo de Chat</h2>
-            <form id="form-chat">
-                <label>Nome de Usuário:</label>
-                <input type="text" id="chat-user" class="campo-texto" required>
-                
-                <label>Mensagem (Editável):</label>
-                <input type="text" id="chat-msg" class="campo-texto" required>
-                
-                <button type="submit" class="btn-primario">Enviar Mensagem</button>
-                <button type="button" class="btn-voltar">Voltar</button>
-            </form>
-        </section>
-
-        <section id="tela-email" class="painel-formulario oculto">
-            <h2>Módulo SMTP (E-mail)</h2>
-            <form id="form-email">
-                <label>Remetente:</label>
-                <input type="email" id="email-from" class="campo-texto" required>
-                
-                <label>Destinatário:</label>
-                <input type="email" id="email-to" class="campo-texto" required>
-                
-                <label>Corpo da Mensagem:</label>
-                <textarea id="email-body" class="campo-area" required></textarea>
-                
-                <button type="submit" class="btn-primario">Disparar E-mail</button>
-                <button type="button" class="btn-voltar">Voltar</button>
-            </form>
-        </section>
-
-        <section id="tela-sites" class="painel-formulario oculto">
-            <h2>Módulo Web (HTTP/HTTPS)</h2>
-            <form id="form-sites">
-                <label>Usuário da Rede:</label>
-                <input type="text" id="web-user" class="campo-texto" required>
-                
-                <label>URL / Hostname:</label>
-                <input type="text" id="web-url" class="campo-texto travado" readonly>
-                
-                <button type="submit" class="btn-primario">Fazer Requisição (GET)</button>
-                <button type="button" class="btn-voltar">Voltar</button>
-            </form>
-        </section>
-
-        <section id="tela-arquivos" class="painel-formulario oculto">
-            <h2>Módulo de Arquivos (FTP)</h2>
-            <form id="form-arquivos">
-                <label>Remetente:</label>
-                <input type="text" id="ftp-user" class="campo-texto" required>
-                
-                <label>Nome do Arquivo:</label>
-                <input type="text" id="ftp-nome" class="campo-texto travado" readonly>
-                
-                <label>Formato:</label>
-                <input type="text" id="ftp-extensao" class="campo-texto travado" readonly>
-                
-                <button type="submit" class="btn-primario">Transmitir Pacote</button>
-                <button type="button" class="btn-voltar">Voltar</button>
-            </form>
-        </section>
-
-        <pre id="terminal-saida" class="oculto"></pre>
-
-    </main>
-
-    <script src="./script/criptografia.js"></script>
-    <script src="./script/terminal.js"></script>
-    <script src="./script/modulos.js"></script>
-    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+    <script type="module" src="scripts/application.js"></script>
 </body>
+
 </html>
